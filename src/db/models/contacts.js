@@ -12,6 +12,7 @@ export const contactsSchema = new Schema(
     },
     email: {
       type: String,
+      default: "",
     },
     isFavourite: {
       type: Boolean,
