@@ -1,5 +1,5 @@
 const parseNumber = (value, defaultValue) => {
-  if (typeof value !== 'undefined') return defaultValue;
+  if (typeof value === 'undefined') return defaultValue;
 
   const parsedValue = parseInt(value);
   if (Number.isNaN(parsedValue)) return defaultValue;
