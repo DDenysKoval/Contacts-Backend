@@ -2,7 +2,6 @@ import Joi from 'joi';
 
 const minCharacters = 3;
 const maxCharacters = 20;
-const contactTypes = ['work', 'home', 'personal'];
 
 export const createContactSchema = Joi.object({
   name: Joi.string()
@@ -24,7 +23,7 @@ export const createContactSchema = Joi.object({
   }),
   isFavorite: Joi.boolean(),
   contactType: Joi.string()
-    .valid(contactTypes)
+    .valid('work', 'home', 'personal')
     .required()
     .messages({
       'string.base': 'Contact type should be a string',
@@ -50,7 +49,7 @@ export const patchContactSchema = Joi.object({
   }),
   isFavorite: Joi.boolean(),
   contactType: Joi.string()
-    .valid(contactTypes)
+    .valid('work', 'home', 'personal')
     .messages({
       'string.base': 'Username should be a string',
       'string.valid': `Contact type must be one of ${contactTypes} types`,
