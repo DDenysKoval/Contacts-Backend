@@ -27,7 +27,7 @@ export const createContactSchema = Joi.object({
     .required()
     .messages({
       'string.base': 'Contact type should be a string',
-      'string.valid': `Contact type must be one of ${contactTypes} types`,
+      'string.valid': `Contact type must be one of types`,
       'any.required': 'Contact type is required',
     }),
 });
@@ -48,10 +48,8 @@ export const patchContactSchema = Joi.object({
     'string.base': 'Email should be a string',
   }),
   isFavorite: Joi.boolean(),
-  contactType: Joi.string()
-    .valid('work', 'home', 'personal')
-    .messages({
-      'string.base': 'Username should be a string',
-      'string.valid': `Contact type must be one of ${contactTypes} types`,
-    }),
+  contactType: Joi.string().valid('work', 'home', 'personal').messages({
+    'string.base': 'Username should be a string',
+    'string.valid': `Contact type must be one of types`,
+  }),
 });
