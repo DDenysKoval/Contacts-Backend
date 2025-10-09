@@ -1,9 +1,11 @@
+import createHttpError from 'http-errors';
 import { THIRTY_DAYS } from '../constants/index.js';
 import {
   loginUser,
   logoutUser,
   refreshUsersSession,
   registerUser,
+  requestResetToken,
 } from '../services/auth.js';
 
 export const registerUserController = async (req, res) => {
@@ -74,4 +76,20 @@ export const logoutUserController = async (req, res) => {
   res.clearCookie('refreshToken');
 
   res.status(204).send();
+};
+
+export const requestResetEmailPasswordController = async (req, res) => {
+  const response = await requestResetToken(req.body.email);
+
+  if (!response) {
+    throw new createHttpError.InternalServerError(
+      'Failed to send the email, please try again later.',
+    );
+  }
+
+  res.json({
+    status: 200,
+    message: 'Reset password email has been successfully sent.',
+    data: {},
+  });
 };
