@@ -49,7 +49,7 @@ export const createContact = async (payload) => {
   return contact;
 };
 
-export const patchContact = async (contactId, payload, userId) => {
+export const patchContact = async (contactId, userId, payload) => {
   const contact = await ContactsCollection.findOneAndUpdate(
     { _id: contactId, userId },
     payload,

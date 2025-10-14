@@ -91,7 +91,7 @@ export const logoutUser = async (sessionId) => {
 };
 
 export const requestResetToken = async (email) => {
-  const user = UsersCollection.findOne({ email });
+  const user = await UsersCollection.findOne({ email });
   if (!user) {
     throw createHttpError.NotFound('User not found');
   }
@@ -117,10 +117,43 @@ export const requestResetToken = async (email) => {
     link: `${getEnvVar('APP_DOMAIN')}/reset-password?token=${resetToken}`,
   });
 
-  await sendEmail({
-    from: getEnvVar(SMTP.SMTP_FROM),
-    to: email,
-    subject: 'Reset your password',
-    html,
-  });
+  try {
+    await sendEmail({
+      from: getEnvVar(SMTP.SMTP_FROM),
+      to: email,
+      subject: 'Reset your password',
+      html,
+    });
+
+    return true;
+  } catch (error) {
+    console.error('Failed to send reset email:', error.message);
+    return false;
+  }
+};
+
+export const resetPassword = async (token, password, sessionId) => {
+  try {
+    const entries = jwt.verify(token, getEnvVar('JWT_SECRET'));
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
+    const user = await UsersCollection.findByIdAndUpdate(entries.sub, {
+      password: encryptedPassword,
+    });
+
+    if (!user) {
+      throw new createHttpError.BadRequest('User not found');
+    }
+
+    await SessionsCollection.deleteOne({ _id: sessionId });
+  } catch (err) {
+    if (err.name === 'TokenExpiredError') {
+      throw new createHttpError.Unauthorized('Token is expired');
+    }
+
+    if (err.name === 'JsonWebTokenError') {
+      throw new createHttpError.Unauthorized('Token is unautorized');
+    }
+    throw err;
+  }
 };

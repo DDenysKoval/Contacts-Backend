@@ -30,6 +30,7 @@ export const createContactSchema = Joi.object({
       'string.valid': `Contact type must be one of types`,
       'any.required': 'Contact type is required',
     }),
+  photo: Joi.string(),
 });
 
 export const patchContactSchema = Joi.object({
@@ -52,4 +53,5 @@ export const patchContactSchema = Joi.object({
     'string.base': 'Username should be a string',
     'string.valid': `Contact type must be one of types`,
   }),
+  photo: Joi.string(),
 });
