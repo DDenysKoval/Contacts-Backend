@@ -99,7 +99,7 @@ export const requestResetToken = async (email) => {
   const resetToken = jwt.sign(
     { sub: user._id, email },
     getEnvVar('JWT_SECRET'),
-    { expiresIn: '5m' }, //5 minutes
+    { expiresIn: '5m' },
   );
 
   const resetPasswordTemplatePath = path.join(
