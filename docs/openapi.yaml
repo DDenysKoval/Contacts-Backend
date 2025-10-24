@@ -12,7 +12,6 @@ tags:
   - name: Auth
     description: Operations with Auth
 servers:
-  # - url: http://localhost:3000
   - url: https://nodejs-hw-mongodb-3-rexi.onrender.com
 paths:
   /contacts:

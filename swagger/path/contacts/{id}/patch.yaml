@@ -18,10 +18,6 @@ requestBody:
       schema:
         type: object
         properties:
-          userId:
-            description: "Contact's user id"
-            type: string
-            example: 68e51d854b8bb00f1b84b2fe
           name:
             description: "Contact's name"
             type: string
@@ -46,7 +42,7 @@ requestBody:
           photo:
             description: "Link to contact's photo"
             type: string
-            example: https://res.cloudinary.com/dsr7znzlu/image/upload/v1760467934/au3ouxxczdmavw2kqy64.jpg
+            format: binary
 responses:
   '200':
     description: 'Patch contact'

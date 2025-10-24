@@ -29,31 +29,11 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: isFavourite
-    schema:
-      type: boolean
-      example: true
-  - in: query
-    name: phoneNumber
-    schema:
-      type: number
-      example: +380660000001
-  - in: query
-    name: email
+    name: userId
     schema:
       type: string
-      example: contacts@mail.com
-  - in: query
-    name: photo
-    schema:
-      type: string
-      example: https://res.cloudinary.com/dsr7znzlu/image/upload/v1760467934/au3ouxxczdmavw2kqy64.jpg
-  - in: query
-    name: contactType
-    schema:
-      type: string
-      enum: ['work', 'personal', 'home']
-      example: personal
+      example: 68e51d854b8bb00f1b84b2fe
+
 responses:
   '200':
     description: 'Get contacts'

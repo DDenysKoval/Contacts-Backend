@@ -15,10 +15,6 @@ requestBody:
           - phoneNumber
           - contactType
         properties:
-          userId:
-            description: "Contacts's user id"
-            type: string
-            example: 68e51d854b8bb00f1b84b2fe
           name:
             description: "Contacts's name"
             type: string
