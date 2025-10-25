@@ -82,7 +82,7 @@
                   "photo": {
                     "description": "Link to contact's photo",
                     "type": "string",
-                    "example": "https://res.cloudinary.com/dsr7znzlu/image/upload/v1760467934/au3ouxxczdmavw2kqy64.jpg"
+                    "format": "binary"
                   }
                 }
               }
@@ -199,14 +199,6 @@
                 "desc"
               ],
               "example": "asc"
-            }
-          },
-          {
-            "in": "query",
-            "name": "userId",
-            "schema": {
-              "type": "string",
-              "example": "68e51d854b8bb00f1b84b2fe"
             }
           }
         ],
@@ -554,14 +546,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Delete contact",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+            "description": "Delete contact"
           },
           "401": {
             "$ref": "#/components/responses/401"

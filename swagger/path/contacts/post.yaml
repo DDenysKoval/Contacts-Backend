@@ -39,7 +39,7 @@ requestBody:
           photo:
             description: "Link to contact's photo"
             type: string
-            example: https://res.cloudinary.com/dsr7znzlu/image/upload/v1760467934/au3ouxxczdmavw2kqy64.jpg
+            format: binary
 responses:
   '200':
     description: 'Get contact by id'
