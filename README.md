@@ -7,14 +7,10 @@ Contacts Backend is a backend service for storing and managing contacts via REST
 
 ## Technologies
 
-* Node.js (npm)
+* Node.js
 * JavaScript
-* Express / Koa / other HTTP framework (see `package.json` for details)
+* Express
 * Swagger / Redocly for API documentation
-
-> Note: Check `package.json` for exact dependencies and versions.
-
----
 
 ## Features
 
@@ -22,13 +18,6 @@ Contacts Backend is a backend service for storing and managing contacts via REST
 * Data validation
 * API documentation via Swagger
 * Environment-based configuration
-
----
-
-## Prerequisites
-
-* Node.js (LTS) and npm installed
-* (Optional) Docker for containerized deployment
 
 ---
 
@@ -45,8 +34,6 @@ cd Contacts-Backend
 
 ```bash
 npm install
-# or
-yarn install
 ```
 
 3. Copy `.env.example` to `.env` and configure environment variables.
@@ -55,8 +42,6 @@ yarn install
 
 ```bash
 npm run dev
-# or
-npm start
 ```
 
 5. Open API documentation (if available):
@@ -95,4 +80,4 @@ Refer to `package.json` for full list. Common scripts:
 The project includes a `swagger` and/or `docs` folder with an OpenAPI specification. To view:
 
 1. Run the server
-2. Open Swagger UI (e.g., `http://localhost:3000/docs` or `[http://l](http://l)
+2. Open Swagger UI (`http://localhost:3000/api-docs`)
